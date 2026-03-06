@@ -1,6 +1,7 @@
 ---
 - name: Install and start Nginx
   hosts: myhosts         # Inventory group name
+  remote_user: ansible
   become: true              # Run tasks with sudo privileges
   vars:
     nginx_package: nginx
@@ -21,3 +22,4 @@
         name: "{{ nginx_package }}"
         state: started
         enabled: yes
+
