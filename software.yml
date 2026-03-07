@@ -1,0 +1,16 @@
+- name: Install OpenJDK 8
+  hosts: your_target_hosts
+  become: yes
+
+  tasks:
+    - name: Install OpenJDK 8 on Debian/Ubuntu
+      apt:
+        name: openjdk-8-jdk
+        state: present
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
+
+    - name: Install OpenJDK 8 on Red Hat/CentOS
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
+      when: ansible_os_family == 'RedHat'
